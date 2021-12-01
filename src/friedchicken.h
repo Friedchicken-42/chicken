@@ -1,5 +1,5 @@
-#ifndef CHICKEN_H
-#define CHICKEN_H
+#ifndef FRIEDCHICKEN_H
+#define FRIEDCHICKEN_H
 
 #include <stdio.h>
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "chicken.h"
+#include "friedchicken.h"
 
 int main(int argc, char *argv[]) {
     char *filename;

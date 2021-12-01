@@ -1,14 +1,21 @@
-#include "chicken.h"
+#include "friedchicken.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void vm_read_chicken(FILE *f) {
-    if (!(fgetc(f) == 'h' && fgetc(f) == 'i' && fgetc(f) == 'c' && fgetc(f) == 'k' && fgetc(f) == 'e' && fgetc(f) == 'n')) {
-        printf("error: not a chicken\n");
+void vm_read_friedchicken(FILE *f) {
+    char *str = "friedchicken";
+    char check = 1;
+    
+    for(int i = 1; i < strlen(str); i++){
+        check &= fgetc(f) == str[i];
+    }
+
+    if (!check) {
+        printf("error: not a friedchicken\n");
         exit(1);
-    };
+    }
 }
 
 int vm_read_op(VM *vm) {
@@ -36,11 +43,12 @@ void vm_push_code(VM *vm, char *filename) {
             count = 0;
         } else if (c == ' ') {
             ;
-        } else if (c == 'c') {
-            vm_read_chicken(f);
+        } else if (c == 'f') {
+            vm_read_friedchicken(f);
             count++;
         } else {
             printf("unknow character: %c \n", c);
+            exit(1);
         }
     }
 }
@@ -148,7 +156,7 @@ int vm_step(VM *vm) {
         case AXE:
             return 1;
         case CHICKEN:
-            stack_push_str(vm->stack, "chicken");
+            stack_push_str(vm->stack, "friedchicken");
             break;
         case ADD:
             vm_command_add(vm);
